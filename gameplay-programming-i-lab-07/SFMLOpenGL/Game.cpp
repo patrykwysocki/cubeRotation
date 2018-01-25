@@ -85,7 +85,7 @@ void Game::run()
 				}
 			}
 
-			//rotate on y
+			//rotate on y to the right
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Y))
 			{
 				for (int i = 0; i < 8; i++)
@@ -93,16 +93,40 @@ void Game::run()
 					m_cubePoints[i] = m_matrix.rotationY(1)*m_cubePoints[i];
 				}
 			}
+			//rotate on y to the left
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::T))
+			{
+				for (int i = 0; i < 8; i++)
+				{
+					m_cubePoints[i] = m_matrix.rotationY(-1)*m_cubePoints[i];
+				}
+			}
 			//rotate on x
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
+			{
+				for (int i = 0; i < 8; i++)
+				{
+					m_cubePoints[i] = m_matrix.rotationX(-1)*m_cubePoints[i];
+				}
+			}
+			//rotate on x
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::C))
 			{
 				for (int i = 0; i < 8; i++)
 				{
 					m_cubePoints[i] = m_matrix.rotationX(1)*m_cubePoints[i];
 				}
 			}
-			//rotate on z
+			//rotate on z to the left
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
+			{
+				for (int i = 0; i < 8; i++)
+				{
+					m_cubePoints[i] = m_matrix.rotationZ(-1)*m_cubePoints[i];
+				}
+			}
+			//rotate on z to the left
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::V))
 			{
 				for (int i = 0; i < 8; i++)
 				{
@@ -222,7 +246,7 @@ void Game::draw()
 	cout << "Drawing Cube " << endl;
 	glLoadIdentity();
 	glRotatef(rotationAngle, 0, 1, 0); // Rotates the camera on Y Axis
-
+	glTranslatef(0, 0, -10);
 	glCallList(1);
 
 	window.display();
